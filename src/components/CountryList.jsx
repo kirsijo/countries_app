@@ -53,6 +53,7 @@ const CountryList = (props) => {
                 officialname={c.name.official}
                 key={c.name.common}
                 languages={c.languages}
+                currencies={c.currencies}
                 flag={c.flags.png}
                 
                 />
