@@ -1,18 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
 * {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:'IBM Plex Sans', sans-serif;
+}
+
+html {
+  background: url(./images/greg-rosenke-globe.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
 
 nav {
-  background-color: bisque;
+  background-color: transparent;
+  width: 100%;
+  color:white;
 }
 
 .nav-links {
   display:flex;
-  width:100%;
-  position: fixed;
+  width: 100%;
   justify-content: space-between;
-  font-size: 24px;
+  font-size: 18px;
 
 }
 
@@ -20,11 +28,22 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color:white;
+
+}
+
 li {
   display: inline-block;
+  margin: 15px;
 }
 
 /* COUNTRIES LIST */
+
+form {
+  text-align: center;
+  margin: 20px;
+}
 
 .countries-list {
   display: flex;

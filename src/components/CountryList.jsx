@@ -11,13 +11,13 @@ const CountryList = (props) => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get("https://restcountries.com/v3.1/all")
-        .catch((error) => {
-            console.log(error);
-        }).then((res) => {
+        axios.get("https://restcountries.com/v3.1/all").then((res) => {
             setCountries(res.data);
+            console.log(res)
             console.log(countryData);
             setLoading(false);
+        }).catch((error) => {
+            console.log(error);
         })
     }, []);
 
@@ -49,7 +49,7 @@ const CountryList = (props) => {
             {searchFilter.map((c) => (
                 <CountryCard 
                 data={c}
-                name={c.name}
+                name={c.name.common}
                 officialname={c.name.official}
                 key={c.name.common}
                 flag={c.flags.png}
