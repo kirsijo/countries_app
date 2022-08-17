@@ -1,9 +1,23 @@
 import {Link} from "react-router-dom";
 
 const CountryCard = (props) => {
-    const {name, officialname, languages, currencies} = props;
+    const {name, officialname, languages, currencies, population} = props;
 
-
+    const formatPopulation = (population) => {
+        if(population>=1000000) {
+           const populationInMillions = population / 1000000;
+           return `${populationInMillions.toFixed(2)} M`
+        } if(population>=100000) {
+            const populationInHundredsThousands = population / 100000;
+            return `${populationInHundredsThousands.toFixed(2)} K` 
+        } if(population>=10000) {
+            const populationInTensOfThousands = population/10000;
+            return `${populationInTensOfThousands.toFixed(2)} K`
+        } if(population<10000) {
+            const populationInThousands = population/10000;
+            return `${populationInThousands.toFixed(2)} K`
+        }
+    }
 
     return (
         <>
@@ -27,6 +41,11 @@ const CountryCard = (props) => {
                         <span key={i}>{(i ? ', ' : '') + value.name} </span>)
                         
 })}
+                </div>
+                <div>
+                    <h5>Population</h5>
+                    {formatPopulation(population)}
+
                 </div>
             </div>
         </div>
