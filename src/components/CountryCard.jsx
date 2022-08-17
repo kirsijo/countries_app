@@ -7,17 +7,11 @@ const CountryCard = (props) => {
         if(population>=1000000) {
            const populationInMillions = population / 1000000;
            return `${populationInMillions.toFixed(2)} M`
-        } if(population>=100000) {
-            const populationInHundredsThousands = population / 100000;
-            return `${populationInHundredsThousands.toFixed(2)} K` 
-        } if(population>=10000) {
-            const populationInTensOfThousands = population/10000;
-            return `${populationInTensOfThousands.toFixed(2)} K`
-        } if(population<10000) {
-            const populationInThousands = population/10000;
-            return `${populationInThousands.toFixed(2)} K`
-        }
+        } else {
+            const populationInThousands = population / 1000;
+            return `${populationInThousands.toFixed(2)} K` 
     }
+}
 
     return (
         <>
