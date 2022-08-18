@@ -82,6 +82,7 @@ input {
   align-items: center;
   border-radius: 5px;
   padding: 5px;
+  position: relative;
 }
 
 .blue-name-card {
@@ -101,3 +102,15 @@ h5 {
   font-size: 20px;
   margin: 5px;
 }
+
+.flag-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flag-container img {
+  height: 40px;
+  width: 70px;
+}
+ 

@@ -1,10 +1,14 @@
 import {Link} from "react-router-dom";
 
 const CountryCard = (props) => {
-    const {name, officialname, languages, currencies, population} = props;
+    const {name, officialname, languages, currencies, population, flag} = props;
 
     const formatPopulation = (population) => {
-        if(population>=1000000) {
+        if (population > 1000000000) {
+            const populationInBillions = population / 1000000000;
+           return `${populationInBillions.toFixed(2)} B`
+        }
+        else if(population>=1000000) {
            const populationInMillions = population / 1000000;
            return `${populationInMillions.toFixed(2)} M`
         } else {
@@ -30,7 +34,6 @@ const CountryCard = (props) => {
                 <div>
                     <h5>Currencies</h5>
                     {Object.values(currencies || {}).map((value,i) => {
-                        console.log(value)
                         return(
                         <span key={i}>{(i ? ', ' : '') + value.name} </span>)
                         
@@ -39,6 +42,10 @@ const CountryCard = (props) => {
                 <div>
                     <h5>Population</h5>
                     {formatPopulation(population)}
+
+                </div>
+                <div className="flag-container">
+                    <img src={flag}></img>
 
                 </div>
             </div>
