@@ -2,6 +2,7 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import CountryCard from "./CountryCard";
 import Nav from "./Nav";
+import ScrolltoTopButton from "./ScrolltoTopButton";
 
 
 const CountryList = (props) => {
@@ -61,6 +62,7 @@ const CountryList = (props) => {
             ))}
 
         </div>
+        <ScrolltoTopButton/>
         </>
     )
 
