@@ -89,8 +89,9 @@ li {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-h5 {
+h6 {
   color: white;
+  font-size: 18px;
 }
 
 /* COUNTRIES LIST */
