@@ -7,36 +7,38 @@ const IndividualCountry = (props) => {
     const {name} = useParams();
 
     const [countryData, setcountryData] = useState([]);
+    const [capital, setCapital] = useState('');
     const [loading, setLoading] = useState(false);
     const [temperature, setTemperature] = useState("loading..");
     const [icon, setIcon] = useState("loading..");
 
+
+    const getWeather = async (capital) => {
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${capital}&appid=${api_key}&units=metric`
+      );
+      setTemperature(response.data.main.temp);
+      setIcon(response.data.weather[0].icon);
+    };
+
     useEffect(() => {
         setLoading(true);
-        axios.get(`https://restcountries.com/v3.1/name/${name}`).then((response) => {
+        const getTheData = async () => {
+        try {
+       const response = await axios.get(`https://restcountries.com/v3.1/name/${name}`)
             console.log(response);
             setcountryData(response.data);
+            setCapital(response.data[0].capital);
+            await getWeather(response.data[0].capital);
             setLoading(false);
-        }).catch((error) => {
+        } catch(error) {
             console.log(error);
-        })
+        }}
+        getTheData();
     },[])
 
-    const capital = countryData[0].capital;
     const api_key = process.env.REACT_APP_API_KEY;
     
-    useEffect(() => {
-        const getWeather = async () => {
-          const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${props.capital}&appid=${api_key}&units=metric`
-          );
-          console.log(response);
-          setTemperature(response.data.main.temp);
-          setIcon(response.data.weather[0].icon);
-        };
-        getWeather();
-      }, []);
-
 
     return (
         <>
