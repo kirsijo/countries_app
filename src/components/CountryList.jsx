@@ -14,8 +14,6 @@ const CountryList = (props) => {
         setLoading(true);
         axios.get("https://restcountries.com/v3.1/all").then((res) => {
             setCountries(res.data);
-            console.log(res)
-            console.log(countryData);
             setLoading(false);
         }).catch((error) => {
             console.log(error);

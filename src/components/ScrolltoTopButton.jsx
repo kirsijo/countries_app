@@ -6,10 +6,10 @@ const ScrolltoTopButton = () => {
 
     const toggleVisibility = () => {
         const scroll = document.documentElement.scrollTop;
-        if (scroll > 300) {
+        if (scroll > 500) {
             setVisible(true);
         }
-        else if (scroll <= 300) {
+        else if (scroll <= 500) {
             setVisible(false);
         }
     }
@@ -24,7 +24,7 @@ const ScrolltoTopButton = () => {
 
     return (
         <button onClick={scrollToTop} className="scroll-button" >
-             <span class="material-symbols-outlined">
+             <span className="material-symbols-outlined">
 arrow_upward
 </span>
            

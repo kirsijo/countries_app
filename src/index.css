@@ -183,3 +183,9 @@ h5 {
  font-weight: 600;
  font-size: 2.5rem;
 }
+
+/*INDIVIDUAL COUNTRY */
+
+.country-info-container{
+  background-color: aliceblue;
+}
