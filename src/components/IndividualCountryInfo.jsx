@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 const IndividualCountry = (props) => {
     const {code} = useParams();
 
+    const [currentCountry, setCurrentCountry] = useState(code);
     const [countryName, setcountryName] = useState('');
     const [capital, setCapital] = useState('');
     const [loading, setLoading] = useState(false);
