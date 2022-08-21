@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Nav from './Nav';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import {Link} from 'react'
+import {Link} from 'react-router-dom'
 
 const IndividualCountry = (props) => {
     const {code} = useParams();
@@ -12,6 +12,7 @@ const IndividualCountry = (props) => {
     const [loading, setLoading] = useState(false);
     const [temperature, setTemperature] = useState("loading..");
     const [icon, setIcon] = useState("loading..");
+    const [borders, setBorders] = useState([]);
 
 
     const getWeather = async (capital) => {
@@ -30,6 +31,7 @@ const IndividualCountry = (props) => {
             console.log(response);
             setcountryData(response.data);
             setCapital(response.data[0].capital);
+            setBorders(response.data[0].borders);
             await getWeather(response.data[0].capital);
             setLoading(false);
         } catch(error) {
@@ -40,6 +42,7 @@ const IndividualCountry = (props) => {
 
     const api_key = process.env.REACT_APP_API_KEY;
     
+    console.log(borders);
 
     return (
         <>
@@ -54,6 +57,8 @@ const IndividualCountry = (props) => {
       />
         </div>
         <div className="bordering-countries-div"><h3>Bordering countries</h3>
+        {borders.map((ccode) => (<Link reloadDocument key={ccode} to={`../countries/${ccode}`}>
+      {ccode}</Link>))}
         </div>
         </>
     )
