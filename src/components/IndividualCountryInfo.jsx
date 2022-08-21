@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import Nav from './Nav';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import {Link} from 'react'
 
 const IndividualCountry = (props) => {
-    const {name} = useParams();
+    const {code} = useParams();
 
     const [countryData, setcountryData] = useState([]);
     const [capital, setCapital] = useState('');
@@ -25,7 +26,7 @@ const IndividualCountry = (props) => {
         setLoading(true);
         const getTheData = async () => {
         try {
-       const response = await axios.get(`https://restcountries.com/v3.1/name/${name}`)
+       const response = await axios.get(`https://restcountries.com/v3.1/alpha/${code}`)
             console.log(response);
             setcountryData(response.data);
             setCapital(response.data[0].capital);
@@ -44,13 +45,15 @@ const IndividualCountry = (props) => {
         <>
         <Nav/>
         <div className="country-info-container">
-            <h1>{name}</h1>
+            <h1>{countryData.name}</h1>
             <h2>Current weather in {capital}</h2>
             <p>temperature {temperature}</p>
       <img
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="weathericon"
       />
+        </div>
+        <div className="bordering-countries-div"><h3>Bordering countries</h3>
         </div>
         </>
     )

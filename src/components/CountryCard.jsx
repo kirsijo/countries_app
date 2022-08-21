@@ -1,7 +1,9 @@
 import {Link} from "react-router-dom";
 
 const CountryCard = (props) => {
-    const {name, officialname, languages, currencies, population, flag, data} = props;
+    const {name, officialname, languages, currencies, population, flag, data, code} = props;
+
+    console.log(props);
 
     const formatPopulation = (population) => {
         if (population > 1000000000) {
@@ -44,7 +46,7 @@ const CountryCard = (props) => {
                     {formatPopulation(population)}
 
                 </div>
-                <div className="see-more-link"><Link to={`${props.name}`}>See more</Link></div>
+                <div className="see-more-link"><Link to={`${props.code}`}>See more</Link></div>
                 <div className="flag-container">
                     <img src={flag}></img>
 

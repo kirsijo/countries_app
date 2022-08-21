@@ -13,6 +13,7 @@ const CountryList = (props) => {
     useEffect(() => {
         setLoading(true);
         axios.get("https://restcountries.com/v3.1/all").then((res) => {
+            console.log(res);
             setCountries(res.data);
             setLoading(false);
         }).catch((error) => {
@@ -55,6 +56,7 @@ const CountryList = (props) => {
                 currencies={c.currencies}
                 population={c.population}
                 flag={c.flags.png}
+                code={c.cca3}
                 
                 />
             ))}

@@ -187,5 +187,9 @@ h5 {
 /*INDIVIDUAL COUNTRY */
 
 .country-info-container{
-  background-color: aliceblue;
+  background-color: white;
+}
+
+.bordering-countries-div {
+  background-color: #0087ca;
 }
