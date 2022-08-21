@@ -193,3 +193,7 @@ h5 {
 .bordering-countries-div {
   background-color: #0087ca;
 }
+
+.border-country-link {
+  color: white;
+}

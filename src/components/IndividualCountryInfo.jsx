@@ -57,8 +57,8 @@ const IndividualCountry = (props) => {
       />
         </div>
         <div className="bordering-countries-div"><h3>Bordering countries</h3>
-        {borders.map((ccode) => (<Link reloadDocument key={ccode} to={`../countries/${ccode}`}>
-      {ccode}</Link>))}
+        {borders.map((ccode) => (<Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
+      <p className="border-country-link">{ccode}</p></Link>))}
         </div>
         </>
     )
