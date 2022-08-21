@@ -7,11 +7,11 @@ import {Link} from 'react-router-dom'
 const IndividualCountry = (props) => {
     const {code} = useParams();
 
-    const [countryData, setcountryData] = useState([]);
+    const [countryName, setcountryName] = useState('');
     const [capital, setCapital] = useState('');
     const [loading, setLoading] = useState(false);
     const [temperature, setTemperature] = useState("loading..");
-    const [icon, setIcon] = useState("loading..");
+    const [icon, setIcon] = useState("");
     const [borders, setBorders] = useState([]);
 
 
@@ -29,7 +29,7 @@ const IndividualCountry = (props) => {
         try {
        const response = await axios.get(`https://restcountries.com/v3.1/alpha/${code}`)
             console.log(response);
-            setcountryData(response.data);
+            setcountryName(response.data[0].name.common);
             setCapital(response.data[0].capital);
             setBorders(response.data[0].borders);
             await getWeather(response.data[0].capital);
@@ -42,19 +42,19 @@ const IndividualCountry = (props) => {
 
     const api_key = process.env.REACT_APP_API_KEY;
     
-    console.log(borders);
+    console.log(countryName);
 
     return (
         <>
         <Nav/>
         <div className="country-info-container">
-            <h1>{countryData.name}</h1>
+            <h1>{countryName}</h1>
             <h2>Current weather in {capital}</h2>
-            <p>temperature {temperature}</p>
-      <img
+            <p>temperature {temperature} Celcius</p>
+      {icon ? <img
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="weathericon"
-      />
+      /> : <p>loading...</p>}
         </div>
         <div className="bordering-countries-div"><h3>Bordering countries</h3>
         {borders.map((ccode) => (<Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
