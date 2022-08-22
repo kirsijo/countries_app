@@ -6,7 +6,7 @@ const Navigation = () => {
         <>
         <Navbar expand="lg">
             <Navbar.Brand className="m-3"href="/">Countries app</Navbar.Brand>
-            <Navbar.Collapse id="bsic-navbar-nav">
+            <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
             <Nav.Item>
            <Nav.Link href="/">Home</Nav.Link>
