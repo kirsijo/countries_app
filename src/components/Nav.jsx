@@ -1,27 +1,23 @@
 import {NavLink} from "react-router-dom";
+import Nav from 'react-bootstrap/Nav';
 
-const Nav = () => {
+const Navigation = () => {
     return (
         <>
-        <div className="nav-links">
-        <nav>
-            <ul>
-                <li>
-            <NavLink to="/">
-                <h1>HOME</h1>
-            </NavLink>
-            </li>
-            <li>
-            <NavLink to="/countries">
-                <h1>COUNTRIES</h1>
-            </NavLink>
-            </li>
-            </ul>
-        </nav>
-        </div>
+        <Nav>
+            <Nav.Item>
+           <Nav.Link href="/">Home</Nav.Link>
+           </Nav.Item>
+           <Nav.Item>
+            <Nav.Link href="/countries"> Countries </Nav.Link>
+            </Nav.Item>
+
+            
+        
+        </Nav>
         
         </>
     )
 }
 
-export default Nav;
+export default Navigation;

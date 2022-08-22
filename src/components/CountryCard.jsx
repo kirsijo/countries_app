@@ -38,8 +38,9 @@ const CountryCard = (props) => {
                         return(
                         <span key={i}>{(i ? ', ' : '') + value.name} </span>)
                     })}
+            <Card.Subtitle>Population: {formatPopulation(population)}</Card.Subtitle>
             </Card.Subtitle>
-            <Button variant="outline-info"><Link to={`${props.code}`}>See more</Link></Button>               
+            <Button variant="outline-info" href={`${props.code}`}>See more</Button>               
                 </Card.Body>
           </Card>
         </>
