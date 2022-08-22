@@ -1,4 +1,8 @@
 import {Link} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 
 const CountryCard = (props) => {
     const {name, officialname, languages, currencies, population, flag, data, code} = props;
@@ -21,38 +25,23 @@ const CountryCard = (props) => {
 
     return (
         <>
-        <div className="country-card">
-            <div className="blue-name-card">
-            <h3>{name}</h3>
-            <h4>{officialname}</h4>
-            </div>
-            <div className="country-information">
-                <div>
-                    <h5>Languages</h5>
-                    {Object.values(languages || {}).map((value,i) => (
+        <Card style={{ width: '15rem'}}>
+            <Card.Img variant="top" src={flag}/>
+            <Card.Body>
+            <Card.Title>{name}</Card.Title>
+            <Card.Subtitle> Official name: {officialname}</Card.Subtitle>
+            <Card.Subtitle> Languages: {Object.values(languages || {}).map((value,i) => (
                         <span key={i}>{(i ? ', ' : '') + value} </span>
-                    ))}
-                </div>
-                <div>
-                    <h5>Currencies</h5>
-                    {Object.values(currencies || {}).map((value,i) => {
+                    ))}</Card.Subtitle>
+            <Card.Subtitle>
+                Currencies: {Object.values(currencies || {}).map((value,i) => {
                         return(
                         <span key={i}>{(i ? ', ' : '') + value.name} </span>)
-                        
-})}
-                </div>
-                <div>
-                    <h5>Population</h5>
-                    {formatPopulation(population)}
-
-                </div>
-                <div className="see-more-link"><Link to={`${props.code}`}>See more</Link></div>
-                <div className="flag-container">
-                    <img src={flag}></img>
-
-                </div>
-            </div>
-        </div>
+                    })}
+            </Card.Subtitle>
+            <Button variant="outline-info"><Link to={`${props.code}`}>See more</Link></Button>               
+                </Card.Body>
+          </Card>
         </>
     )
 }
