@@ -25,7 +25,7 @@ const CountryCard = (props) => {
 
     return (
         <>
-        <Card style={{ width: '15rem'}}>
+        <Card className="mb-3" style={{ width: '15rem'}}>
             <Card.Img variant="top" src={flag}/>
             <Card.Body>
             <Card.Title>{name}</Card.Title>
