@@ -1,13 +1,14 @@
-import {NavLink} from "react-router-dom";
 import {Nav, Navbar} from 'react-bootstrap';
+
 
 const Navigation = () => {
     return (
         <>
-        <Navbar expand="lg">
-            <Navbar.Brand className="m-3"href="/">Countries app</Navbar.Brand>
-            <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
+        <Navbar collapseOnSelect expand="lg" bg="light" opacity="65">
+        <Navbar.Brand className="m-3"href="/">Countries app</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse className="responsive-navbar-nav">
+        <Nav className="mr-auto">
             <Nav.Item>
            <Nav.Link href="/">Home</Nav.Link>
            </Nav.Item>

@@ -40,8 +40,9 @@ const CountryCard = (props) => {
                     })}
             <Card.Subtitle>Population: {formatPopulation(population)}</Card.Subtitle>
             </Card.Subtitle>
-            <Button variant="outline-info" href={`${props.code}`}>See more</Button>               
-                </Card.Body>
+            </Card.Body>
+            <Button variant="outline-info" href={`/countries/${props.code}`}>See more</Button>               
+               
           </Card>
         </>
     )
