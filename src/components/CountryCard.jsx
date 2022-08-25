@@ -26,18 +26,15 @@ const CountryCard = (props) => {
     return (
         <>
         <Card className="mb-3" style={{ width: '15rem'}}>
-            <Card.Img variant="top" src={flag}/>
+            <Card.Img variant="top" src={flag}
+            />
             <Card.Body>
             <Card.Title>{name}</Card.Title>
             <Card.Subtitle> Official name: {officialname}</Card.Subtitle>
-            <Card.Subtitle> Languages: {Object.values(languages || {}).map((value,i) => (
-                        <span key={i}>{(i ? ', ' : '') + value} </span>
-                    ))}</Card.Subtitle>
+            <Card.Subtitle> Languages: {Object.values(languages || {}).join(', ')
+                    }</Card.Subtitle>
             <Card.Subtitle>
-                Currencies: {Object.values(currencies || {}).map((value,i) => {
-                        return(
-                        <span key={i}>{(i ? ', ' : '') + value.name} </span>)
-                    })}
+                Currencies: {Object.values(currencies|| {}).map((currency) => currency.name).join(', ')}
             <Card.Subtitle>Population: {formatPopulation(population)}</Card.Subtitle>
             </Card.Subtitle>
             </Card.Body>

@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 import CountryCard from "./CountryCard";
 import Nav from "./Nav";
 import ScrolltoTopButton from "./ScrolltoTopButton";
+import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 const CountryList = (props) => {
@@ -30,7 +32,19 @@ const CountryList = (props) => {
     })
 
     if (loading) {
-        return <p className="loading">Loading...</p>
+        return (
+            <Col className="text-center m-5">
+            <Spinner
+              animation="border"
+              role="status"
+              className="center"
+              variant="info"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </Col>
+        ) 
+        
     }
 
     return (
