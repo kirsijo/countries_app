@@ -2,6 +2,8 @@ import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Row } from "react-bootstrap";
+import Col from "react-bootstrap";
 
 
 const CountryCard = (props) => {

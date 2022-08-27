@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import ScrolltoTopButton from "./ScrolltoTopButton";
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
+import Form from "react-bootstrap/Form";
 
 
 const CountryList = (props) => {
@@ -40,6 +41,7 @@ const CountryList = (props) => {
               className="center"
               variant="info"
             >
+        {/* Note to self: Important - visually hidden is a helper which hides elements but keeps them accessible to assistive technologies */}
               <span className="visually-hidden">Loading...</span>
             </Spinner>
           </Col>
@@ -51,13 +53,13 @@ const CountryList = (props) => {
         <>
         <Nav/>
         <div className="country-search-container">
-            <form onChange={searchUpdateHandler}>
+            <Form onChange={searchUpdateHandler}>
         <input
         className="country-search"
         type="text"
         placeholder="Search countries.."
         />
-        </form>
+        </Form>
         </div>
         <div className="countries-list">
             {searchFilter.map((c) => (

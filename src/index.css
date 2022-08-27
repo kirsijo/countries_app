@@ -12,62 +12,8 @@ html {
   background-size: cover;
 }
 
-nav {
-  background-color: transparent;
-  width: 100%;
-  color:white;
-  background: rgba(28, 18, 18, 0.727);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(61, 48, 48, 0.3);
-}
 
-.nav-links {
-  display:flex;
-  width: 100%;
-  justify-content: space-between;
-  font-size: 18px;
 
-}
-
-a {
-  text-decoration: none;
-}
-
-li a:visited {
-  color:white;
-
-}
-
-li a {
-  display: inline-block;
-  position: relative;
-  color:#0087ca;
-}
-
-li a:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #0087ca;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-li a:hover:after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-li {
-  display: inline-block;
-  margin: 15px;
-}
 
 /*HOME OVERLAY*/
 
