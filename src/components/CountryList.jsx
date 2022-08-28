@@ -6,6 +6,7 @@ import ScrolltoTopButton from "./ScrolltoTopButton";
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import Form from "react-bootstrap/Form";
+import { InputGroup } from "react-bootstrap";
 
 
 const CountryList = (props) => {
@@ -53,10 +54,10 @@ const CountryList = (props) => {
         <>
         <Nav/>
         <div className="country-search-container">
-            <Form onChange={searchUpdateHandler}>
-        <input
-        className="country-search"
-        type="text"
+            <Form>
+        <Form.Control onChange={searchUpdateHandler}
+        type="search"
+        className="me-2"
         placeholder="Search countries.."
         />
         </Form>

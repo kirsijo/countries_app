@@ -52,14 +52,16 @@ const IndividualCountry = (props) => {
 
     const api_key = process.env.REACT_APP_API_KEY;
 
-    console.log(flagIcon);
+    console.log(borders);
 
     return (
         <>
         <Nav/>
         <Container className="sm justify-content-center bg-info rounded">
             <Row className="text-center p-2"><h1>{countryName}{flagIcon}</h1></Row>
-            <Row className="m-3">Current weather in {capital}</Row>
+            <Col>
+            {capital &&
+            <Row className="m-3">Current weather in {capital}</Row>}
            <Row>
             <Col>
             {icon ? <img
@@ -68,13 +70,15 @@ const IndividualCountry = (props) => {
       /> : <p>loading...</p>} </Col>
             <Col><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
           <p><i className="bi bi-wind"></i> {wind} m/s</p> </Col></Row>
+          </Col>
           <Row>
 
           </Row>
+          
         <h2>Bordering countries</h2>
         <Row className="justify-content-center">
-        {borders.map((ccode) => (<Col xs={2}  className="text-center m-2 p-2 bg-light rounded"><Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
-      <p>{ccode}</p></Link></Col>))}
+        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col xs={2}  className="text-center m-2 p-2 bg-light rounded"><Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
+      <p>{ccode}</p></Link></Col>)} 
       </Row>
         </Container>
         </>
