@@ -57,27 +57,23 @@ const IndividualCountry = (props) => {
     return (
         <>
         <Nav/>
-        <Container className="sm justify-content-center bg-info rounded">
-            <Row className="text-center p-2"><h1>{countryName}{flagIcon}</h1></Row>
-            <Col>
+        <Container className="sm justify-content-center bg-light rounded p-3">
+            <Row className="text-center p-2"><h1>{countryName} {flagIcon}</h1></Row>
             {capital &&
-            <Row className="m-3">Current weather in {capital}</Row>}
-           <Row>
-            <Col>
+            <Row className="m-3 justify-content-center">Current weather in {capital}</Row>}
+           <Row className="align-items-center">
+            <Col className='bg-info'>
             {icon ? <img
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="weathericon"
       /> : <p>loading...</p>} </Col>
-            <Col><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
+            <Col className="border border-info p-2" xs={8}><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
           <p><i className="bi bi-wind"></i> {wind} m/s</p> </Col></Row>
-          </Col>
-          <Row>
 
-          </Row>
           
-        <h2>Bordering countries</h2>
+        <Row className="m-2"><h2>Bordering countries</h2></Row>
         <Row className="justify-content-center">
-        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col xs={2}  className="text-center m-2 p-2 bg-light rounded"><Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
+        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col  className="text-center m-2 p-2 bg-info rounded"><Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
       <p>{ccode}</p></Link></Col>)} 
       </Row>
         </Container>
