@@ -20,6 +20,8 @@ const IndividualCountry = (props) => {
     const [wind, setWind] = useState('');
     const [icon, setIcon] = useState("");
     const [borders, setBorders] = useState([]);
+    const [region, setRegion] = useState('');
+    const [drivingSide, setDrivingSide] = useState('');
 
 
     const getWeather = async (capital) => {
@@ -42,6 +44,8 @@ const IndividualCountry = (props) => {
             setFlagIcon(response.data[0].flag);
             setCapital(response.data[0].capital);
             setBorders(response.data[0].borders);
+            setRegion(response.data[0].subregion)
+            setDrivingSide(response.data[0].car.side);
             await getWeather(response.data[0].capital);
             setLoading(false);
         } catch(error) {
@@ -51,8 +55,6 @@ const IndividualCountry = (props) => {
     },[])
 
     const api_key = process.env.REACT_APP_API_KEY;
-
-    console.log(borders);
 
     return (
         <>
@@ -69,13 +71,16 @@ const IndividualCountry = (props) => {
       /> : <p>loading...</p>} </Col>
             <Col className="border border-info p-2" xs={7}><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
           <p><i className="bi bi-wind"></i> {wind} m/s</p> </Col></Row>
-
-          
-        <Row className="m-2"><h2>Bordering countries</h2></Row>
+        <Row className="m-2 h2">Bordering countries</Row>
         <Row className="justify-content-center">
-        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col xs={2}  className="text-center shadow-sm m-2 p-2 rounded"><Link className="text-decoration-none"reloadDocument key={ccode} to={`/countries/${ccode}`}>
+        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col key={ccode} xs={2}  className="text-center shadow-sm m-2 p-2 rounded"><Link className="text-decoration-none"reloadDocument key={ccode} to={`/countries/${ccode}`}>
       <p>{ccode}</p></Link></Col>)} 
       </Row>
+      <Row className="m-2 h2">Info</Row>
+      <Row>
+        <Col>Region: {region}</Col>
+      </Row>
+      <Row>In this country they drive on the {drivingSide}</Row>
         </Container>
         </>
     )
