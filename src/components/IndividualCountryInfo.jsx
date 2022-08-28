@@ -73,7 +73,7 @@ const IndividualCountry = (props) => {
           
         <Row className="m-2"><h2>Bordering countries</h2></Row>
         <Row className="justify-content-center">
-        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col  className="text-center m-2 p-2 bg-info rounded"><Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
+        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col xs={2}  className="text-center m-2 p-2 bg-info rounded"><Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
       <p>{ccode}</p></Link></Col>)} 
       </Row>
         </Container>
