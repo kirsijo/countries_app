@@ -67,13 +67,13 @@ const IndividualCountry = (props) => {
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="weathericon"
       /> : <p>loading...</p>} </Col>
-            <Col className="border border-info p-2" xs={8}><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
+            <Col className="border border-info p-2" xs={7}><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
           <p><i className="bi bi-wind"></i> {wind} m/s</p> </Col></Row>
 
           
         <Row className="m-2"><h2>Bordering countries</h2></Row>
         <Row className="justify-content-center">
-        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col xs={2}  className="text-center m-2 p-2 bg-info rounded"><Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
+        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col xs={2}  className="text-center shadow-sm m-2 p-2 rounded"><Link className="text-decoration-none"reloadDocument key={ccode} to={`/countries/${ccode}`}>
       <p>{ccode}</p></Link></Col>)} 
       </Row>
         </Container>

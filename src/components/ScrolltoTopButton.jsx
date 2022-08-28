@@ -32,9 +32,7 @@ const ScrolltoTopButton = (props) => {
         display:block;
         position: fixed; 
         background-color: #26d9f7;
-        width: 70px;
-        height: 70px;
-        border-radius: 50% ;
+        border-radius: 50%;
         right: 5%;
         bottom: 40px;
         cursor: pointer;
@@ -46,15 +44,12 @@ const ScrolltoTopButton = (props) => {
             display:block;
             position: fixed; 
             background-color: #26d9f7;
-            width: 70px;
-            height: 70px;
             border-radius: 50% ;
             right: 5%;
             bottom: 40px;
             cursor: pointer;
-            color: green;
+            color: #82b791;
             font-size: 2.5rem;
-            border-color: blue;
             }
 
         .btn-hidden {
