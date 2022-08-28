@@ -2,8 +2,7 @@ import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Row } from "react-bootstrap";
-import Col from "react-bootstrap";
+
 
 
 const CountryCard = (props) => {
@@ -31,14 +30,15 @@ const CountryCard = (props) => {
             <Card.Img variant="top" src={flag}
             />
             <Card.Body>
-            <Card.Title>{name}</Card.Title>
-            <Card.Subtitle> Official name: {officialname}</Card.Subtitle>
-            <Card.Subtitle> Languages: {Object.values(languages || {}).join(', ')
+            <Card.Title className="p-2">{name}</Card.Title>
+            <Card.Subtitle className="p-2"> Official name: {officialname}</Card.Subtitle>
+            <Card.Subtitle className="p-2"> Languages: {Object.values(languages || {}).join(', ')
                     }</Card.Subtitle>
-            <Card.Subtitle>
+            <Card.Subtitle className="p-2">
                 Currencies: {Object.values(currencies|| {}).map((currency) => currency.name).join(', ')}
-            <Card.Subtitle>Population: {formatPopulation(population)}</Card.Subtitle>
-            </Card.Subtitle>
+                </Card.Subtitle>
+            <Card.Subtitle className="p-2">Population: {formatPopulation(population)}</Card.Subtitle>
+            
             </Card.Body>
             <Button variant="outline-info" href={`/countries/${props.code}`}>See more</Button>               
                

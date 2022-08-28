@@ -20,7 +20,7 @@ const Navigation = () => {
             .navbar-glass a {
                 display: inline-block;
                 position: relative;
-                color:#1db2cb
+                color:#26d9f7
               }
 
               .navbar-glass a:hover {

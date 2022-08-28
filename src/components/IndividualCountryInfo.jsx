@@ -3,15 +3,21 @@ import Nav from './Nav';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
+import Container from 'react-bootstrap/Container';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 const IndividualCountry = (props) => {
     const {code} = useParams();
 
     const [currentCountry, setCurrentCountry] = useState(code);
     const [countryName, setcountryName] = useState('');
+    const [flagIcon, setFlagIcon] = useState('');
     const [capital, setCapital] = useState('');
     const [loading, setLoading] = useState(false);
-    const [temperature, setTemperature] = useState("loading..");
+    const [temperature, setTemperature] = useState(0);
+    const [wind, setWind] = useState('');
     const [icon, setIcon] = useState("");
     const [borders, setBorders] = useState([]);
 
@@ -20,7 +26,9 @@ const IndividualCountry = (props) => {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${capital}&appid=${api_key}&units=metric`
       );
+      console.log(response);
       setTemperature(response.data.main.temp);
+      setWind(response.data.wind.speed);
       setIcon(response.data.weather[0].icon);
     };
 
@@ -31,6 +39,7 @@ const IndividualCountry = (props) => {
        const response = await axios.get(`https://restcountries.com/v3.1/alpha/${code}`)
             console.log(response);
             setcountryName(response.data[0].name.common);
+            setFlagIcon(response.data[0].flag);
             setCapital(response.data[0].capital);
             setBorders(response.data[0].borders);
             await getWeather(response.data[0].capital);
@@ -42,25 +51,32 @@ const IndividualCountry = (props) => {
     },[])
 
     const api_key = process.env.REACT_APP_API_KEY;
-    
-    console.log(countryName);
+
+    console.log(flagIcon);
 
     return (
         <>
         <Nav/>
-        <div className="country-info-container">
-            <h1>{countryName}</h1>
-            <h2>Current weather in {capital}</h2>
-            <p>temperature {temperature} Celcius</p>
-      {icon ? <img
+        <Container className="sm justify-content-center bg-info rounded">
+            <Row className="text-center p-2"><h1>{countryName}{flagIcon}</h1></Row>
+            <Row className="m-3">Current weather in {capital}</Row>
+           <Row>
+            <Col>
+            {icon ? <img
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="weathericon"
-      /> : <p>loading...</p>}
-        </div>
-        <div className="bordering-countries-div"><h3>Bordering countries</h3>
-        {borders.map((ccode) => (<Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
-      <p className="border-country-link">{ccode}</p></Link>))}
-        </div>
+      /> : <p>loading...</p>} </Col>
+            <Col><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
+          <p><i className="bi bi-wind"></i> {wind} m/s</p> </Col></Row>
+          <Row>
+
+          </Row>
+        <h2>Bordering countries</h2>
+        <Row className="justify-content-center">
+        {borders.map((ccode) => (<Col xs={2}  className="text-center m-2 p-2 bg-light rounded"><Link reloadDocument key={ccode} to={`/countries/${ccode}`}>
+      <p>{ccode}</p></Link></Col>))}
+      </Row>
+        </Container>
         </>
     )
 
