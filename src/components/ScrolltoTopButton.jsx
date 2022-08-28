@@ -1,16 +1,18 @@
 import {useState} from 'react';
+import Button from 'react-bootstrap/Button';
 
-const ScrolltoTopButton = () => {
-    const [visible, setVisible] = useState(false);
+const ScrolltoTopButton = (props) => {
+    const [visible, setVisible] = useState("hidden");
+    const [scrollPosition, setSrollPosition] = useState(0);
 
 
     const toggleVisibility = () => {
         const scroll = document.documentElement.scrollTop;
-        if (scroll > 500) {
-            setVisible(true);
+        if (scroll > 50) {
+            setVisible("visible");
         }
-        else if (scroll <= 500) {
-            setVisible(false);
+        else if (scroll <= 50) {
+            setVisible("hidden");
         }
     }
     const scrollToTop = () => {
@@ -23,14 +25,48 @@ const ScrolltoTopButton = () => {
     window.addEventListener('scroll', toggleVisibility);
 
     return (
-        <button onClick={scrollToTop} className="scroll-button" >
-             <span className="material-symbols-outlined">
-arrow_upward
-</span>
-           
+        <>
+        <style type="text/css">
+        {`
+        .btn-visible { 
+        display:block;
+        position: fixed; 
+        background-color: #26d9f7;
+        width: 70px;
+        height: 70px;
+        border-radius: 50% ;
+        right: 5%;
+        bottom: 40px;
+        cursor: pointer;
+        color: blue;
+        font-size: 2.5rem;
+        }
 
+        .btn-visible:hover { 
+            display:block;
+            position: fixed; 
+            background-color: #26d9f7;
+            width: 70px;
+            height: 70px;
+            border-radius: 50% ;
+            right: 5%;
+            bottom: 40px;
+            cursor: pointer;
+            color: green;
+            font-size: 2.5rem;
+            border-color: blue;
+            }
 
-        </button>
+        .btn-hidden {
+        display: none;
+        } 
+        `}
+    </style>
+        <Button onClick={scrollToTop} variant={visible} >
+             <i className="bi bi-arrow-up-circle-fill"></i>
+        
+        </Button>
+        </>
     )
 
 }

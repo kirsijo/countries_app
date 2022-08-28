@@ -8,8 +8,6 @@ import Card from 'react-bootstrap/Card';
 const CountryCard = (props) => {
     const {name, officialname, languages, currencies, population, flag, data, code} = props;
 
-    console.log(props);
-
     const formatPopulation = (population) => {
         if (population > 1000000000) {
             const populationInBillions = population / 1000000000;

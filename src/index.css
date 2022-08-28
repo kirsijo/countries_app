@@ -13,8 +13,6 @@ html {
 }
 
 
-
-
 /*HOME OVERLAY*/
 
 .overlay-div {
@@ -62,83 +60,4 @@ input {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-}
-
-/* COUNTRY CARD */
-
-.country-card {
-  display: flex;
-  flex-direction: column;
-  text-align:center;
-  min-width:250px;
-  position: relative;
-  background-color: white;
-  margin: 15px;
-  align-items: center;
-  border-radius: 5px;
-  padding: 5px;
-  position: relative;
-}
-
-.blue-name-card {
-  min-width: 250px;
-  background-color: rgb(91, 194, 241);
-  border-radius: 5px;
-  padding: 10px;
-  margin: 5px
-}
-
-.country-information {
-  display:flex;
-  flex-direction: row;
-}
-
-h5 {
-  font-size: 20px;
-  margin: 5px;
-}
-
-.flag-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.flag-container img {
-  height: 40px;
-  width: 70px;
-}
-
-.scroll-button {
-  position: fixed; 
-  background-color: white;
-  width: 80px;
-  height: 80px;
-  border-radius: 50% ;
-  right: 5%;
-  bottom: 40px;
-  z-index: 1;
-  cursor: pointer;
-  color: blue;
-  border-color: blue;
-}
-
-
-.material-symbols-outlined {
- font-weight: 600;
- font-size: 2.5rem;
-}
-
-/*INDIVIDUAL COUNTRY */
-
-.country-info-container{
-  background-color: white;
-}
-
-.bordering-countries-div {
-  background-color: #0087ca;
-}
-
-.border-country-link {
-  color: white;
 }
