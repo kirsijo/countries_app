@@ -21,6 +21,7 @@ const IndividualCountry = (props) => {
     const [icon, setIcon] = useState("");
     const [borders, setBorders] = useState([]);
     const [region, setRegion] = useState('');
+    const [localName, setLocalName] = useState({});
     const [drivingSide, setDrivingSide] = useState('');
 
 
@@ -46,6 +47,7 @@ const IndividualCountry = (props) => {
             setBorders(response.data[0].borders);
             setRegion(response.data[0].subregion)
             setDrivingSide(response.data[0].car.side);
+            setLocalName(response.data[0].name.nativeName);
             await getWeather(response.data[0].capital);
             setLoading(false);
         } catch(error) {
@@ -55,6 +57,9 @@ const IndividualCountry = (props) => {
     },[])
 
     const api_key = process.env.REACT_APP_API_KEY;
+
+    const allLocalNames = Object.values(localName).map((name) => name.common).join(', ');
+    console.log(allLocalNames);
 
     return (
         <>
@@ -81,6 +86,7 @@ const IndividualCountry = (props) => {
         <Col>Region: {region}</Col>
       </Row>
       <Row>In this country they drive on the {drivingSide}</Row>
+      <Row>Name of this country in local languages is {allLocalNames}. </Row>
         </Container>
         </>
     )
