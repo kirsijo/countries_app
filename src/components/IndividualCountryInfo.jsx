@@ -11,7 +11,6 @@ import Button from "react-bootstrap/Button";
 const IndividualCountry = (props) => {
     const {code} = useParams();
 
-    const [currentCountry, setCurrentCountry] = useState(code);
     const [countryName, setcountryName] = useState('');
     const [flagIcon, setFlagIcon] = useState('');
     const [capital, setCapital] = useState('');
