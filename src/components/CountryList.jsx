@@ -3,30 +3,25 @@ import {useEffect} from "react";
 import CountryCard from "./CountryCard";
 import Nav from "./Nav";
 import ScrolltoTopButton from "./ScrolltoTopButton";
+
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import Form from "react-bootstrap/Form";
-import { InputGroup } from "react-bootstrap";
 
+import { useDispatch, useSelector } from "react-redux";
+import {initCountries, search} from '../features/countries/countriesSlice';
 
 const CountryList = (props) => {
-   // const [countryData, setCountries] = useState([]);
-   // const [search, setSearch] = useState("");
-   // const [loading, setLoading] = useState(false);
+  
+    const dispatch = useDispatch();
 
     useEffect(() => {
-      //  setLoading(true);
-        axios.get("https://restcountries.com/v3.1/all").then((res) => {
-        //    setCountries(res.data);
-        //    setLoading(false);
-        }).catch((error) => {
-            console.log(error);
-        })
-    }, []);
+      dispatch(initCountries())
+    }, [dispatch]);
 
-    const searchUpdateHandler = (e) => {
+   // const searchUpdateHandler = (e) => {
        // setSearch(e.target.value);
-    }
+    //}
 
     const searchFilter = countryData.filter((country) => {
         return country.name.common.toLowerCase().includes(search.toLowerCase());
