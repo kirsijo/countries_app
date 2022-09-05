@@ -10,22 +10,22 @@ import { InputGroup } from "react-bootstrap";
 
 
 const CountryList = (props) => {
-    const [countryData, setCountries] = useState([]);
-    const [search, setSearch] = useState("");
-    const [loading, setLoading] = useState(false);
+   // const [countryData, setCountries] = useState([]);
+   // const [search, setSearch] = useState("");
+   // const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
+      //  setLoading(true);
         axios.get("https://restcountries.com/v3.1/all").then((res) => {
-            setCountries(res.data);
-            setLoading(false);
+        //    setCountries(res.data);
+        //    setLoading(false);
         }).catch((error) => {
             console.log(error);
         })
     }, []);
 
     const searchUpdateHandler = (e) => {
-        setSearch(e.target.value);
+       // setSearch(e.target.value);
     }
 
     const searchFilter = countryData.filter((country) => {
