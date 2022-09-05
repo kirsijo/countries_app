@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Nav from './Nav';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -11,17 +11,17 @@ import Button from "react-bootstrap/Button";
 const IndividualCountry = (props) => {
     const {code} = useParams();
 
-    const [countryName, setcountryName] = useState('');
-    const [flagIcon, setFlagIcon] = useState('');
-    const [capital, setCapital] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [temperature, setTemperature] = useState(0);
-    const [wind, setWind] = useState('');
-    const [icon, setIcon] = useState("");
-    const [borders, setBorders] = useState([]);
-    const [region, setRegion] = useState('');
-    const [localName, setLocalName] = useState({});
-    const [drivingSide, setDrivingSide] = useState('');
+    // const [countryName, setcountryName] = useState('');
+    // const [flagIcon, setFlagIcon] = useState('');
+    // const [capital, setCapital] = useState('');
+    // const [loading, setLoading] = useState(false);
+    // const [temperature, setTemperature] = useState(0);
+    // const [wind, setWind] = useState('');
+    // const [icon, setIcon] = useState("");
+    // const [borders, setBorders] = useState([]);
+    // const [region, setRegion] = useState('');
+    // const [localName, setLocalName] = useState({});
+    // const [drivingSide, setDrivingSide] = useState('');
 
 
     const getWeather = async (capital) => {
@@ -29,26 +29,26 @@ const IndividualCountry = (props) => {
         `https://api.openweathermap.org/data/2.5/weather?q=${capital}&appid=${api_key}&units=metric`
       );
       console.log(response);
-      setTemperature(response.data.main.temp);
-      setWind(response.data.wind.speed);
-      setIcon(response.data.weather[0].icon);
+      // setTemperature(response.data.main.temp);
+      // setWind(response.data.wind.speed);
+      // setIcon(response.data.weather[0].icon);
     };
 
     useEffect(() => {
-        setLoading(true);
+        // setLoading(true);
         const getTheData = async () => {
         try {
        const response = await axios.get(`https://restcountries.com/v3.1/alpha/${code}`)
             console.log(response);
-            setcountryName(response.data[0].name.common);
-            setFlagIcon(response.data[0].flag);
-            setCapital(response.data[0].capital);
-            setBorders(response.data[0].borders);
-            setRegion(response.data[0].subregion)
-            setDrivingSide(response.data[0].car.side);
-            setLocalName(response.data[0].name.nativeName);
+            // setcountryName(response.data[0].name.common);
+            // setFlagIcon(response.data[0].flag);
+            // setCapital(response.data[0].capital);
+            // setBorders(response.data[0].borders);
+            // setRegion(response.data[0].subregion)
+            // setDrivingSide(response.data[0].car.side);
+            // setLocalName(response.data[0].name.nativeName);
             await getWeather(response.data[0].capital);
-            setLoading(false);
+            // setLoading(false);
         } catch(error) {
             console.log(error);
         }}
