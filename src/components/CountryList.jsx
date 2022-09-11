@@ -6,7 +6,6 @@ import ScrolltoTopButton from "./ScrolltoTopButton";
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import Form from "react-bootstrap/Form";
-
 import { useDispatch, useSelector } from "react-redux";
 import {initCountries, search} from '../features/countries/countriesSlice';
 
@@ -17,6 +16,8 @@ const CountryList = (props) => {
     const countryData = useSelector((state) => state.countries.countries);
     const loading = useSelector((state) => state.countries.isLoading);
     const searchInput = useSelector((state) => state.countries.search);
+
+    console.log(countryData);
 
     useEffect(() => {
       dispatch(initCountries())
@@ -69,6 +70,7 @@ const CountryList = (props) => {
                 currencies={c.currencies}
                 population={c.population}
                 flag={c.flags.png}
+                code={c.cca3}
                 />
             ))}
 
