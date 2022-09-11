@@ -19,7 +19,6 @@ const IndividualCountry = () => {
   }, [dispatch]);
 
     const {code} = useParams();
-    console.log(useParams());
     const countryData = useSelector((state) => state.countries.countries);
     const country = countryData.find(country => country.cca3 === code)
     const [loading, setLoading] = useState(true);
@@ -48,8 +47,6 @@ const IndividualCountry = () => {
     const api_key = process.env.REACT_APP_API_KEY;
 
     const allLocalNames = Object.values(country?.name?.nativeName || {}).map((name) => name.common).join(', ');
-    console.log(allLocalNames);
-
 
     if (loading) return (
       <p>loading...</p>
