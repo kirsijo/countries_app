@@ -3,13 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import CountryList from './components/CountryList';
 import IndividualCountryInfo from "./components/IndividualCountryInfo";
-//import { useParams } from "react-router-dom";
-
-
-// const RouterWrapper = (props) => {
-//   const params = useParams();
-//   return <IndividualCountryInfo params={params} {...props} />
-// }
+import Favourites from "./components/Favourites";
 
 const App = () => {
   return (
@@ -19,6 +13,7 @@ const App = () => {
       <Route index element={<Home/>}/>
       <Route path="countries" element={<CountryList/>}/>
       <Route path="countries/:code" element={<IndividualCountryInfo/>} />
+      <Route path="favourites" element={<Favourites/>}/>
     </Routes>
     </BrowserRouter>
 

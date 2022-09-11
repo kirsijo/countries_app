@@ -1,4 +1,5 @@
 import {Nav, Navbar} from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 
 
 const Navigation = () => {
@@ -61,6 +62,10 @@ const Navigation = () => {
            <Nav.Item>
             <Nav.Link href="/countries"> Browse </Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+            <Link to="/favourites"> Favourites </Link>
+            </Nav.Item>
+
         </Nav>
         </Navbar.Collapse>
         </Navbar>

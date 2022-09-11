@@ -21,8 +21,8 @@ const IndividualCountry = () => {
     const {code} = useParams();
     const countryData = useSelector((state) => state.countries.countries);
     const country = countryData.find(country => country.cca3 === code)
-    const [loading, setLoading] = useState(true);
     
+    const [loading, setLoading] = useState(true);
     const [temperature, setTemperature] = useState(0);
     const [wind, setWind] = useState('');
     const [icon, setIcon] = useState(""); 

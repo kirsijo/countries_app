@@ -17,15 +17,9 @@ const CountryList = (props) => {
     const loading = useSelector((state) => state.countries.isLoading);
     const searchInput = useSelector((state) => state.countries.search);
 
-    console.log(countryData);
-
     useEffect(() => {
       dispatch(initCountries())
     }, [dispatch]);
-
-   // const searchUpdateHandler = (e) => {
-       // setSearch(e.target.value);
-    //}
 
     const searchFilter = countryData.filter((country) => {
         return country.name.common.toLowerCase().includes(searchInput.toLowerCase());
@@ -71,6 +65,7 @@ const CountryList = (props) => {
                 population={c.population}
                 flag={c.flags.png}
                 code={c.cca3}
+                data={c}
                 />
             ))}
 

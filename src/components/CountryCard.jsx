@@ -2,11 +2,15 @@ import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import {favourite, favourites } from '../features/countries/countriesSlice'
+import {useDispatch} from 'react-redux'
 
 
 
 const CountryCard = (props) => {
     const {name, officialname, languages, currencies, population, flag, data, code} = props;
+
+    const dispatch = useDispatch();
 
     const formatPopulation = (population) => {
         if (population > 1000000000) {
@@ -22,6 +26,7 @@ const CountryCard = (props) => {
     }
 }
 
+
     return (
         <>
         <Card className="mb-3" style={{ width: '15rem'}}>
@@ -36,7 +41,7 @@ const CountryCard = (props) => {
                 Currencies: {Object.values(currencies|| {}).map((currency) => currency.name).join(', ')}
                 </Card.Subtitle>
             <Card.Subtitle className="p-2">Population: {formatPopulation(population)}</Card.Subtitle>
-            
+            <Button variant="outline-danger" onClick={() => dispatch(favourite(data))}><i className="bi bi-heart"></i></Button>
             </Card.Body>
             <Button variant="outline-info" href={`/countries/${props.code}`}>See more</Button>               
                
