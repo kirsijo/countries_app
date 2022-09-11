@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 
 const ScrolltoTopButton = (props) => {
     const [visible, setVisible] = useState("hidden");
-    const [scrollPosition, setSrollPosition] = useState(0);
+    //const [scrollPosition, setScrollPosition] = useState(0);
 
 
     const toggleVisibility = () => {

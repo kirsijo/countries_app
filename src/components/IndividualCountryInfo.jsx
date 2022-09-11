@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Nav from './Nav';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
@@ -9,51 +9,61 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 const IndividualCountry = (props) => {
-    const {code} = useParams();
-
+    //const {code} = useParams();
+    const location = useLocation();
+    const [loading, setLoading] = useState(false);
+    const countryName = location.state.country;
     // const [countryName, setcountryName] = useState('');
+    const flagIcon = location.state[0].flag;
     // const [flagIcon, setFlagIcon] = useState('');
+    const capital = location.state[0].capital;
     // const [capital, setCapital] = useState('');
-    // const [loading, setLoading] = useState(false);
-    // const [temperature, setTemperature] = useState(0);
-    // const [wind, setWind] = useState('');
-    // const [icon, setIcon] = useState("");
+    
+    const [temperature, setTemperature] = useState(0);
+    const [wind, setWind] = useState('');
+    const [icon, setIcon] = useState("");
+
+    const borders = location.state[0].borders;
     // const [borders, setBorders] = useState([]);
     // const [region, setRegion] = useState('');
+    const region = location.state[0].subregion;
     // const [localName, setLocalName] = useState({});
+    const localName = location.state[0].name.nativeName;
     // const [drivingSide, setDrivingSide] = useState('');
+    const drivingSide = location.state[0].car.side;
 
+    const navigate = useNavigate();
 
     const getWeather = async (capital) => {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${capital}&appid=${api_key}&units=metric`
       );
       console.log(response);
-      // setTemperature(response.data.main.temp);
-      // setWind(response.data.wind.speed);
-      // setIcon(response.data.weather[0].icon);
+      setTemperature(response.data.main.temp);
+      setWind(response.data.wind.speed);
+      setIcon(response.data.weather[0].icon);
     };
 
-    useEffect(() => {
-        // setLoading(true);
-        const getTheData = async () => {
-        try {
-       const response = await axios.get(`https://restcountries.com/v3.1/alpha/${code}`)
-            console.log(response);
-            // setcountryName(response.data[0].name.common);
-            // setFlagIcon(response.data[0].flag);
-            // setCapital(response.data[0].capital);
-            // setBorders(response.data[0].borders);
-            // setRegion(response.data[0].subregion)
-            // setDrivingSide(response.data[0].car.side);
-            // setLocalName(response.data[0].name.nativeName);
-            await getWeather(response.data[0].capital);
-            // setLoading(false);
-        } catch(error) {
-            console.log(error);
-        }}
-        getTheData();
-    },[])
+    // useEffect(() => {
+    //     // setLoading(true);
+    //     const getTheData = async () => {
+    //     try {
+    //    const response = await axios.get(`https://restcountries.com/v3.1/alpha/${code}`)
+    //         console.log(response);
+    //         // setcountryName(response.data[0].name.common);
+    //         // setFlagIcon(response.data[0].flag);
+    //         // setCapital(response.data[0].capital);
+    //         // setBorders(response.data[0].borders);
+    //         // setRegion(response.data[0].subregion)
+    //         // setDrivingSide(response.data[0].car.side);
+    //         // setLocalName(response.data[0].name.nativeName);
+    //         await getWeather(response.data[0].capital);
+    //         // setLoading(false);
+    //     } catch(error) {
+    //         console.log(error);
+    //     }}
+    //     getTheData();
+    // },[])
 
     const api_key = process.env.REACT_APP_API_KEY;
 
@@ -77,8 +87,8 @@ const IndividualCountry = (props) => {
           <p><i className="bi bi-wind"></i> {wind} m/s</p> </Col></Row>
         <Row className="m-2 h2">Bordering countries</Row>
         <Row className="justify-content-center">
-        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((ccode) => <Col key={ccode} xs={2}  className="text-center shadow-sm m-2 p-2 rounded"><Link className="text-decoration-none"reloadDocument key={ccode} to={`/countries/${ccode}`}>
-      <p>{ccode}</p></Link></Col>)} 
+        {borders === undefined ? <Row>{countryName} has no land borders</Row> : borders.map((countryName) => <Col key={countryName} xs={2}  className="text-center shadow-sm m-2 p-2 rounded"><Link className="text-decoration-none"reloadDocument key={countryName} to={`/countries/${countryName}`}>
+      <p>{countryName}</p></Link></Col>)} 
       </Row>
       <Row className="m-2 h2">Info</Row>
       <Row>

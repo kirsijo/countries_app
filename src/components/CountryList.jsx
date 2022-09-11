@@ -1,4 +1,3 @@
-import axios from "axios";
 import {useEffect} from "react";
 import CountryCard from "./CountryCard";
 import Nav from "./Nav";
@@ -15,6 +14,10 @@ const CountryList = (props) => {
   
     const dispatch = useDispatch();
 
+    const countryData = useSelector((state) => state.countries.countries);
+    const loading = useSelector((state) => state.countries.isLoading);
+    const searchInput = useSelector((state) => state.countries.search);
+
     useEffect(() => {
       dispatch(initCountries())
     }, [dispatch]);
@@ -24,7 +27,7 @@ const CountryList = (props) => {
     //}
 
     const searchFilter = countryData.filter((country) => {
-        return country.name.common.toLowerCase().includes(search.toLowerCase());
+        return country.name.common.toLowerCase().includes(searchInput.toLowerCase());
     })
 
     if (loading) {
@@ -49,7 +52,7 @@ const CountryList = (props) => {
         <Nav/>
         <div className="country-search-container">
             <Form>
-        <Form.Control onChange={searchUpdateHandler}
+        <Form.Control onChange={(e) => dispatch(search(e.target.value))}
         type="search"
         className="me-2"
         placeholder="Search countries.."
@@ -59,7 +62,6 @@ const CountryList = (props) => {
         <div className="countries-list">
             {searchFilter.map((c) => (
                 <CountryCard 
-                data={c}
                 name={c.name.common}
                 officialname={c.name.official}
                 key={c.name.common}
@@ -67,8 +69,6 @@ const CountryList = (props) => {
                 currencies={c.currencies}
                 population={c.population}
                 flag={c.flags.png}
-                code={c.cca3}
-                
                 />
             ))}
 

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import countries from "../../services/countries";
 import countryService from "../../services/countries";
 
 export const countriesSlice = createSlice({
