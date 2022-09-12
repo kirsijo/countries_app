@@ -21,7 +21,7 @@ const IndividualCountry = () => {
     const {code} = useParams();
     const countryData = useSelector((state) => state.countries.countries);
     const country = countryData.find(country => country.cca3 === code)
-    
+
     const [loading, setLoading] = useState(true);
     const [temperature, setTemperature] = useState(0);
     const [wind, setWind] = useState('');
@@ -54,6 +54,7 @@ const IndividualCountry = () => {
     return (
         <>
         <Nav/>
+
         <Container className="sm justify-content-center bg-light rounded p-3">
             <Row className="text-center p-2"><h1>{country?.name.common} {country?.flag}</h1></Row>
             {country?.capital &&

@@ -2,17 +2,15 @@ import {useEffect} from "react";
 import CountryCard from "./CountryCard";
 import Nav from "./Nav";
 import ScrolltoTopButton from "./ScrolltoTopButton";
-
+import Search from "./Search";
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
-import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
 import {initCountries, search} from '../features/countries/countriesSlice';
 
 const CountryList = (props) => {
   
     const dispatch = useDispatch();
-
     const countryData = useSelector((state) => state.countries.countries);
     const loading = useSelector((state) => state.countries.isLoading);
     const searchInput = useSelector((state) => state.countries.search);
@@ -45,15 +43,7 @@ const CountryList = (props) => {
     return (
         <>
         <Nav/>
-        <div className="country-search-container">
-            <Form>
-        <Form.Control onChange={(e) => dispatch(search(e.target.value))}
-        type="search"
-        className="me-2"
-        placeholder="Search countries.."
-        />
-        </Form>
-        </div>
+        <Search onChange={(e) => dispatch(search(e.target.value))}/>
         <div className="countries-list">
             {searchFilter.map((c) => (
                 <CountryCard 
