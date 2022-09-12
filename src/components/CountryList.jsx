@@ -14,6 +14,7 @@ const CountryList = (props) => {
     const countryData = useSelector((state) => state.countries.countries);
     const loading = useSelector((state) => state.countries.isLoading);
     const searchInput = useSelector((state) => state.countries.search);
+    
 
     useEffect(() => {
       dispatch(initCountries())
@@ -43,7 +44,7 @@ const CountryList = (props) => {
     return (
         <>
         <Nav/>
-        <Search onChange={(e) => dispatch(search(e.target.value))}/>
+        <Search />
         <div className="countries-list">
             {searchFilter.map((c) => (
                 <CountryCard 

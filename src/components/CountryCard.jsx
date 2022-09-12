@@ -35,7 +35,9 @@ const CountryCard = (props) => {
             />
             <Card.Body>
             <Card.Title className="p-2">{name}</Card.Title>
-            <Form type='checkbox'>
+            <Form>
+                <Form.Check variant="success" type="checkbox" onClick={() => dispatch(favourite(data))}>
+                </Form.Check>
             </Form>
             <Card.Subtitle className="p-2"> Official name: {officialname}</Card.Subtitle>
             <Card.Subtitle className="p-2"> Languages: {Object.values(languages || {}).join(', ')
