@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 import countryService from "../../services/countries";
 
 export const countriesSlice = createSlice({
@@ -21,6 +22,7 @@ export const countriesSlice = createSlice({
     },
     favourite(state, action) {
       state.favourites.push(action.payload);
+     // localStorage.setItem(state.favourites);
     },
   },
 });

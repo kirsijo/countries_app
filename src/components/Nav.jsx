@@ -1,8 +1,16 @@
 import {Nav, Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
+import {useSelector} from 'react-redux';
+import { favourites } from '../features/countries/countriesSlice';
+
+
 
 
 const Navigation = () => {
+
+const favs = useSelector((state) => state.countries.favourites);
+console.log(favs.length);
+
     return (
         <>
         <style type="text/css">
@@ -63,7 +71,7 @@ const Navigation = () => {
             <Nav.Link href="/countries"> Browse </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-            <Link to="/favourites"> Favourites </Link>
+            <Link to="/favourites"> Favourites {favs.length} </Link>
             </Nav.Item>
 
         </Nav>
