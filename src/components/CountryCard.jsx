@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 import {favourite, favourites } from '../features/countries/countriesSlice'
 import {useDispatch} from 'react-redux'
 
@@ -34,6 +35,8 @@ const CountryCard = (props) => {
             />
             <Card.Body>
             <Card.Title className="p-2">{name}</Card.Title>
+            <Form type='checkbox'>
+            </Form>
             <Card.Subtitle className="p-2"> Official name: {officialname}</Card.Subtitle>
             <Card.Subtitle className="p-2"> Languages: {Object.values(languages || {}).join(', ')
                     }</Card.Subtitle>
