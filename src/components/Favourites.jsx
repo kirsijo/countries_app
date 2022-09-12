@@ -8,6 +8,8 @@ const Favourites = () => {
 
     const favourites = useSelector((state) => state.countries.favourites);
 
+    // get favourites from localStorage 
+
     console.log(favourites);
 
     return (
@@ -15,7 +17,8 @@ const Favourites = () => {
     <Nav/>
     <Carousel className="mt-10">
             {favourites.map((country) => (
-             <Carousel.Item>
+             <Carousel.Item key={country.name.common}>
+
             <img className="d-block w-100"
             src={`https://source.unsplash.com/featured/1600x900?${country.name.common}`}></img>
             <Carousel.Caption>{country.name.common}</Carousel.Caption>

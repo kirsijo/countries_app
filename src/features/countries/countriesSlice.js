@@ -22,10 +22,11 @@ export const countriesSlice = createSlice({
     },
     favourite(state, action) {
       state.favourites.push(action.payload);
-     // localStorage.setItem(state.favourites);
     },
   },
 });
+
+// initFavourites to get the favourites initial state and set to localStorage
 
 export const initCountries = () => {
   return async (dispatch) => {

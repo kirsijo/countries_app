@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import {favourite, favourites } from '../features/countries/countriesSlice'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 
 
@@ -12,6 +12,10 @@ const CountryCard = (props) => {
     const {name, officialname, languages, currencies, population, flag, data, code} = props;
 
     const dispatch = useDispatch();
+
+    const countryData = useSelector((state) => state.countries.favourites);
+
+    // filter method comparing the countries that are not chosen to update the state of the favourites
 
     const formatPopulation = (population) => {
         if (population > 1000000000) {
@@ -27,6 +31,7 @@ const CountryCard = (props) => {
     }
 }
 
+// add filtering to dispatch to toggle favourites
 
     return (
         <>
