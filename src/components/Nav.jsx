@@ -71,7 +71,7 @@ console.log(favs.length);
             <Nav.Link href="/countries"> Browse </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-            <Link to="/favourites"> Favourites {favs.length} </Link>
+            <Nav.Link href="/favourites"> Favourites ( {favs.length} )</Nav.Link>
             </Nav.Item>
 
         </Nav>

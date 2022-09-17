@@ -5,7 +5,9 @@ import CountryList from './components/CountryList';
 import IndividualCountryInfo from "./components/IndividualCountryInfo";
 import Favourites from "./components/Favourites";
 
+
 const App = () => {
+  
   return (
     <>
     <BrowserRouter>

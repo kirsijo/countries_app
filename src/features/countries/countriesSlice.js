@@ -23,6 +23,9 @@ export const countriesSlice = createSlice({
     favourite(state, action) {
       state.favourites.push(action.payload);
     },
+    // togglefavourite(state,action) {
+    //   state.favourites
+    // }
   },
 });
 
