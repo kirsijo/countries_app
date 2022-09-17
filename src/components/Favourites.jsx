@@ -8,10 +8,6 @@ const Favourites = () => {
 
     const favourites = useSelector((state) => state.countries.favourites);
 
-    // get favourites from localStorage 
-
-    console.log(favourites);
-
     return (
     <>
     <Nav/>

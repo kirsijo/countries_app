@@ -14,6 +14,7 @@ const CountryList = (props) => {
     const countryData = useSelector((state) => state.countries.countries);
     const loading = useSelector((state) => state.countries.isLoading);
     const searchInput = useSelector((state) => state.countries.search);
+    const favourites = useSelector((state) => state.countries.favourites);
     
 
     useEffect(() => {
@@ -23,6 +24,8 @@ const CountryList = (props) => {
     const searchFilter = countryData.filter((country) => {
         return country.name.common.toLowerCase().includes(searchInput.toLowerCase());
     })
+
+    const favouriteNames = favourites.map((c) => c.name.common) 
 
     if (loading) {
         return (
@@ -57,6 +60,7 @@ const CountryList = (props) => {
                 flag={c.flags.png}
                 code={c.cca3}
                 data={c}
+                favourited={favouriteNames.includes(c.name.common)}
                 />
             ))}
 

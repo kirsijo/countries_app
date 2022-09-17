@@ -1,19 +1,23 @@
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import {favourite, favourites } from '../features/countries/countriesSlice'
+import {favourite, favourites, togglefavourite } from '../features/countries/countriesSlice'
 import {useDispatch, useSelector} from 'react-redux'
 
 
 
 const CountryCard = (props) => {
-    const {name, officialname, languages, currencies, population, flag, data, code} = props;
+    const {name, officialname, languages, currencies, population, flag, data, code, favourited} = props;
+   
+
 
     const dispatch = useDispatch();
+    // const toggleFavourite = useSelector((state) => state.countries.togglefavourite);
 
-    const countryData = useSelector((state) => state.countries.favourites);
+    // const countryData = useSelector((state) => state.countries.favourites);
 
     // filter method comparing the countries that are not chosen to update the state of the favourites
 
@@ -31,8 +35,16 @@ const CountryCard = (props) => {
     }
 }
 
-// add filtering to dispatch to toggle favourites
+// const visitedHandler = () => {
+//     if (visited === false) {
+//     setVisited(localStorage.setItem('visited') === 'true')
+//     } else {
+//         toggleFavourite();
+//     }
+// }
 
+// add filtering to dispatch to toggle favourites
+console.log(favourited, name);
     return (
         <>
         <Card className="mb-3" style={{ width: '15rem'}}>
@@ -41,7 +53,8 @@ const CountryCard = (props) => {
             <Card.Body>
             <Card.Title className="p-2">{name}</Card.Title>
             <Form>
-                <Form.Check variant="success" type="checkbox" onClick={() => dispatch(favourite(data))}>
+                <p>Been to this country?</p>
+                <Form.Check checked={favourited} variant="success" type="checkbox" inline="true" onChange={() => dispatch(favourite(data))}>
                 </Form.Check>
             </Form>
             <Card.Subtitle className="p-2"> Official name: {officialname}</Card.Subtitle>
@@ -51,7 +64,7 @@ const CountryCard = (props) => {
                 Currencies: {Object.values(currencies|| {}).map((currency) => currency.name).join(', ')}
                 </Card.Subtitle>
             <Card.Subtitle className="p-2">Population: {formatPopulation(population)}</Card.Subtitle>
-            <Button variant="outline-danger" onClick={() => dispatch(favourite(data))}><i className="bi bi-heart"></i></Button>
+            {/* <Button variant="outline-danger" onClick={() => dispatch(favourite(data))}><i className="bi bi-heart"></i></Button> */}
             </Card.Body>
             <Button variant="outline-info" href={`/countries/${props.code}`}>See more</Button>               
                
