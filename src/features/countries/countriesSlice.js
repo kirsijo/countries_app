@@ -21,10 +21,12 @@ export const countriesSlice = createSlice({
       state.search = action.payload;
     },
     favourite(state, action) {
+      const checkFavs = state.favourites.map((c) => c.name.common)
+      if (checkFavs.includes(action.payload.name.common)) {
+        state.favourites = state.favourites.filter(favourite => favourite.name.common !== action.payload.name.common);
+      } else {
       state.favourites.push(action.payload);
-    },
-    togglefavourite(state,action) {
-      state.favourites.splice(action.payload, 1);
+      }
     }
   },
 });
@@ -39,6 +41,6 @@ export const initCountries = () => {
   };
 };
 
-export const { getCountries, isLoading, search, favourites, favourite } = countriesSlice.actions;
+export const { getCountries, isLoading, search, favourites, favourite, favouriteOn, favouriteOff } = countriesSlice.actions;
 
 export default countriesSlice.reducer;

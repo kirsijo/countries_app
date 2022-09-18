@@ -35,13 +35,7 @@ const CountryCard = (props) => {
     }
 }
 
-// const visitedHandler = () => {
-//     if (visited === false) {
-//     setVisited(localStorage.setItem('visited') === 'true')
-//     } else {
-//         toggleFavourite();
-//     }
-// }
+
 
 // add filtering to dispatch to toggle favourites
 console.log(favourited, name);
