@@ -1,25 +1,16 @@
-import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
-import {favourite, favourites, togglefavourite } from '../features/countries/countriesSlice'
+import {favourite, unfavourite} from '../features/countries/countriesSlice'
 import {useDispatch, useSelector} from 'react-redux'
-
-
 
 const CountryCard = (props) => {
     const {name, officialname, languages, currencies, population, flag, data, code, favourited} = props;
    
 
-
     const dispatch = useDispatch();
-    // const toggleFavourite = useSelector((state) => state.countries.togglefavourite);
-
-    // const countryData = useSelector((state) => state.countries.favourites);
-
-    // filter method comparing the countries that are not chosen to update the state of the favourites
 
     const formatPopulation = (population) => {
         if (population > 1000000000) {
@@ -48,7 +39,7 @@ console.log(favourited, name);
             <Card.Title className="p-2">{name}</Card.Title>
             <Form>
                 <p>Been to this country?</p>
-                <Form.Check checked={favourited} variant="success" type="checkbox" inline="true" onChange={() => dispatch(favourite(data))}>
+                <Form.Check checked={favourited} variant="success" type="checkbox" inline="true" onChange={favourited ? () => dispatch(unfavourite(data)) : () => dispatch(favourite(data)) }>
                 </Form.Check>
             </Form>
             <Card.Subtitle className="p-2"> Official name: {officialname}</Card.Subtitle>

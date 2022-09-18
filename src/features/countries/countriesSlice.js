@@ -21,14 +21,13 @@ export const countriesSlice = createSlice({
       state.search = action.payload;
     },
     favourite(state, action) {
-      const checkFavs = state.favourites.map((c) => c.name.common)
-      if (checkFavs.includes(action.payload.name.common)) {
-        state.favourites = state.favourites.filter(favourite => favourite.name.common !== action.payload.name.common);
-      } else {
       state.favourites.push(action.payload);
-      }
+      },
+    unfavourite(state, action) {
+          state.favourites = state.favourites.filter(favourite => favourite.name.common !== action.payload.name.common);
+        
     }
-  },
+    }
 });
 
 // initFavourites to get the favourites initial state and set to localStorage
@@ -41,6 +40,6 @@ export const initCountries = () => {
   };
 };
 
-export const { getCountries, isLoading, search, favourites, favourite, favouriteOn, favouriteOff } = countriesSlice.actions;
+export const { getCountries, isLoading, search, favourites, favourite, unfavourite} = countriesSlice.actions;
 
 export default countriesSlice.reducer;
