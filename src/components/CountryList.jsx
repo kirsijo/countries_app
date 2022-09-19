@@ -18,9 +18,6 @@ const CountryList = (props) => {
     const searchInput = useSelector((state) => state.countries.search);
     const favourites = useSelector((state) => state.countries.favourites);
 
-    const [formData, setFormData] = useState('');
-    
-
     useEffect(() => {
       dispatch(initCountries())
     }, [dispatch]);
@@ -28,10 +25,6 @@ const CountryList = (props) => {
     const searchFilter = countryData.filter((country) => {
         return country.name.common.toLowerCase().includes(searchInput.toLowerCase());
     })
-
-    const clearFormInput = () => {
-
-    }
 
     const favouriteNames = favourites.map((c) => c.name.common) 
 
