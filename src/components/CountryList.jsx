@@ -6,6 +6,8 @@ import Search from "./Search";
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row'
 import { useDispatch, useSelector } from "react-redux";
 import {initCountries, search} from '../features/countries/countriesSlice';
 
@@ -48,8 +50,15 @@ const CountryList = (props) => {
     return (
         <>
         <Nav/>
-        <Search onChange={search} />
-        <Button variant="secondary p-3 mb-2" onClick={() => dispatch(search(""))}>Clear search </Button>
+        <Container display="d-sm-flex" >
+          <Row className="align-items-center">
+        <Col><Search onChange={search} />
+        </Col>
+        <Col>
+        <Button variant="secondary" onClick={() => dispatch(search(""))}>Clear search </Button>
+        </Col>
+        </Row>
+        </Container>
         <div className="countries-list">
             {searchFilter.map((c) => (
                 <CountryCard 
