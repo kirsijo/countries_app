@@ -12,8 +12,9 @@ const Search = () => {
    
 return (
  <>
-<Form onChange={(e) => dispatch(search(e.target.value))}>
+<Form >
 <Form.Control 
+onChange={(e) => dispatch(search(e.target.value))}
 value={searchValue}
 type="search"
 className="me-2"
