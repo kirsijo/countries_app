@@ -29,7 +29,7 @@ const CountryCard = (props) => {
 
 
 // add filtering to dispatch to toggle favourites
-console.log(favourited, name);
+
     return (
         <>
         <Card className="mb-3" style={{ width: '15rem'}}>

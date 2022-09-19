@@ -9,7 +9,6 @@ import { favourites } from '../features/countries/countriesSlice';
 const Navigation = () => {
 
 const favs = useSelector((state) => state.countries.favourites);
-console.log(favs.length);
 
     return (
         <>
