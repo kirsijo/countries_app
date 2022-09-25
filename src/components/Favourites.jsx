@@ -1,6 +1,5 @@
 import React from "react";
 import Nav from "./Nav"
-import {favourites} from "../features/countries/countriesSlice"
 import {useSelector} from "react-redux"
 import Carousel from "react-bootstrap/Carousel";
 import Container from "react-bootstrap/Container";
@@ -9,9 +8,7 @@ const Favourites = () => {
 
     const favourites = useSelector((state) => state.countries.favourites);
 
-        console.log(favourites);
-
-    if (favourites.length <= 0)
+    if (favourites.length === 0)
         return (
             <>
         <Nav/>

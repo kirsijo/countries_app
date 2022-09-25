@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {initCountries, search} from '../features/countries/countriesSlice';
+import {initCountries} from '../features/countries/countriesSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
@@ -28,7 +28,9 @@ const IndividualCountry = () => {
     const [icon, setIcon] = useState(""); 
     const [description, setDescription] = useState('')
 
-    const getWeather = async (capital) => {
+    const api_key = process.env.REACT_APP_API_KEY;
+
+    const getWeather = async () => {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${country?.capital}&appid=${api_key}&units=metric`
       );
@@ -40,13 +42,11 @@ const IndividualCountry = () => {
     };
 
     useEffect(() => {
-      // we only care about getting weather if country exists. Therefore, country used as dependency.
+      // we only care about getting weather if country exists. Therefore country used as dependency.
       if (country) {
       getWeather();
       }
     },[country]);
-
-    const api_key = process.env.REACT_APP_API_KEY;
 
     const allLocalNames = Object.values(country?.name?.nativeName || {}).map((name) => name.common).join(', ');
 
@@ -56,7 +56,6 @@ const IndividualCountry = () => {
     return (
         <>
         <Nav/>
-
         <Container className="sm justify-content-center bg-light rounded p-3">
             <Row className="text-center p-2"><h1>{country?.name.common} {country?.flag}</h1></Row>
             {country?.capital &&
@@ -69,19 +68,24 @@ const IndividualCountry = () => {
       />  : <p>loading...</p>} </Col>
             <Col className="border border-info p-2" xs={7}><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
           <p><i className="bi bi-wind"></i> {wind} m/s</p> 
-          </Col></Row>
+          </Col>
+          </Row>
+          {/* BORDERING COUNTRIES */}
         <Row className="m-2 h2">Bordering countries</Row>
         <Row className="justify-content-center">
-        {country.borders === undefined ? <Row>{country?.name.common} has no land borders</Row> : country.borders.map((countryName) => <Col key={countryName} xs={2}  className="text-center shadow-sm m-2 p-2 rounded"><Link className="text-decoration-none" key={countryName} to={`/countries/${countryName}`}>
-      <p>{countryName}</p></Link></Col>)} 
+        {country.borders === undefined ? <Row>{country?.name.common} has no land borders</Row> : country.borders.map((countryName) => <Col key={countryName} xs={2}  className="text-center shadow-sm m-2 p-1 rounded">
+          <Link className="text-decoration-none" key={countryName} to={`/countries/${countryName}`}>
+      {countryName}</Link>
+      </Col>)} 
       </Row>
+      {/* INFO */}
       <Row className="m-2 h2">Info</Row>
-      <Row>
-        <Col>Region: {country.subregion}</Col>
+      <Row className="m-1">
+      Region: {country.subregion}
       </Row>
-      <Row>In this country they drive on the {country?.car.side}</Row>
+      <Row className="m-1">In this country they drive on the {country?.car.side}</Row>
 
-      <Row>Name of this country in local language(s) is {allLocalNames}. </Row>
+      <Row className="m-1">Name of this country in local language(s) is {allLocalNames}. </Row>
         </Container>
         </>
     )
