@@ -7,7 +7,6 @@ const Search = () => {
 
     const dispatch = useDispatch();
 
-    const countryData = useSelector((state) => state.countries.countries);
     const searchValue = useSelector((state) => state.countries.search)
    
 return (
