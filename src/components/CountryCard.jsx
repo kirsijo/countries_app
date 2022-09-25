@@ -45,7 +45,6 @@ const CountryCard = (props) => {
                 Currencies: {Object.values(currencies|| {}).map((currency) => currency.name).join(', ')}
                 </Card.Subtitle>
             <Card.Subtitle className="p-2">Population: {formatPopulation(population)}</Card.Subtitle>
-            {/* <Button variant="outline-danger" onClick={() => dispatch(favourite(data))}><i className="bi bi-heart"></i></Button> */}
             </Card.Body>
             <Button variant="outline-info" href={`/countries/${props.code}`}>See more</Button>               
                

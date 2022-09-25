@@ -1,6 +1,8 @@
 # Countries and Weather app
 
-### Using React Bootstrap and Redux Toolkit
+### Using React Bootstrap and Redux Toolkit 
+
+## Lists your favourite/visited countries by persisting state in localStorage
 
 ## To run the app with the weather info for individual country 
 - create an API key at https://openweathermap.org/

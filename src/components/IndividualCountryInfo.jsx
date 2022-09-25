@@ -26,6 +26,7 @@ const IndividualCountry = () => {
     const [temperature, setTemperature] = useState(0);
     const [wind, setWind] = useState('');
     const [icon, setIcon] = useState(""); 
+    const [description, setDescription] = useState('')
 
     const getWeather = async (capital) => {
       const response = await axios.get(
@@ -34,6 +35,7 @@ const IndividualCountry = () => {
       setTemperature(response.data.main.temp);
       setWind(response.data.wind.speed);
       setIcon(response.data.weather[0].icon);
+      setDescription(response.data.weather[0].description)
       setLoading(false);
     };
 
@@ -58,15 +60,16 @@ const IndividualCountry = () => {
         <Container className="sm justify-content-center bg-light rounded p-3">
             <Row className="text-center p-2"><h1>{country?.name.common} {country?.flag}</h1></Row>
             {country?.capital &&
-            <Row className="m-3 justify-content-center">Current weather in {country?.capital}</Row>}
+            <Row className="m-3 justify-content-center">Current weather in {country?.capital}: {description}</Row>}
            <Row className="align-items-center">
             <Col className='bg-info'>
             {icon ? <img
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="weathericon"
-      /> : <p>loading...</p>} </Col>
+      />  : <p>loading...</p>} </Col>
             <Col className="border border-info p-2" xs={7}><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
-          <p><i className="bi bi-wind"></i> {wind} m/s</p> </Col></Row>
+          <p><i className="bi bi-wind"></i> {wind} m/s</p> 
+          </Col></Row>
         <Row className="m-2 h2">Bordering countries</Row>
         <Row className="justify-content-center">
         {country.borders === undefined ? <Row>{country?.name.common} has no land borders</Row> : country.borders.map((countryName) => <Col key={countryName} xs={2}  className="text-center shadow-sm m-2 p-2 rounded"><Link className="text-decoration-none" key={countryName} to={`/countries/${countryName}`}>

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 import countryService from "../../services/countries";
 
 export const countriesSlice = createSlice({
