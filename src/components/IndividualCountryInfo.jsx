@@ -50,6 +50,15 @@ const IndividualCountry = () => {
 
     const allLocalNames = Object.values(country?.name?.nativeName || {}).map((name) => name.common).join(', ');
 
+    const borderCountries =
+      country.borders?.map((countryCode) => {
+       const country = countryData.find(country => country.cca3 === countryCode) 
+       return country;
+      })
+
+      console.log(borderCountries);
+   
+
     if (loading) return (
       <p>loading...</p>
     )
@@ -73,9 +82,9 @@ const IndividualCountry = () => {
           {/* BORDERING COUNTRIES */}
         <Row className="m-2 h2">Bordering countries</Row>
         <Row className="justify-content-center">
-        {country.borders === undefined ? <Row>{country?.name.common} has no land borders</Row> : country.borders.map((countryName) => <Col key={countryName} xs={2}  className="text-center shadow-sm m-2 p-1 rounded">
-          <Link className="text-decoration-none" key={countryName} to={`/countries/${countryName}`}>
-      {countryName}</Link>
+        {borderCountries === undefined ? <Row>{country?.name.common} has no land borders</Row> : borderCountries.map((countryName) => <Col key={countryName.name.common} xs={2}  className="text-center shadow-sm m-2 p-1 rounded">
+          <Link className="text-decoration-none" key={countryName.name.common} to={`/countries/${countryName.cca3}`}>
+      {countryName.name.common}</Link>
       </Col>)} 
       </Row>
       {/* INFO */}
