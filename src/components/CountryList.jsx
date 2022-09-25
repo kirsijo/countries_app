@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import CountryCard from "./CountryCard";
 import Nav from "./Nav";
 import ScrolltoTopButton from "./ScrolltoTopButton";
