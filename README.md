@@ -1,8 +1,7 @@
 # Countries and Weather app
 
-## Lists your favourite/visited countries by persisting state in localStorage
-
 - Created using React Bootstrap and Redux Toolkit 
+- Lists your favourite/visited countries by persisting state in localStorage
 - Browse information about countries of the world
 - Save countries you have visited or create a wishlist in Favourites section and enjoy a slideshow of those countries.
 
