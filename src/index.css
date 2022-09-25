@@ -40,26 +40,17 @@ h6 {
 
 /* COUNTRIES LIST / BROWSE */
 
-h3, h4 {
-  color:white;
-}
-
 form {
   text-align: center;
   margin: 20px;
-  padding: 10px;
-  border-color: white;
 }
 
 input {
   padding: 10px;
-  width: 250px;
-  border-radius: 5px;
 }
 
 .countries-list {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: space-around;
 }

@@ -1,13 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import {favourite, unfavourite} from '../features/countries/countriesSlice'
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 
 const CountryCard = (props) => {
-    const {name, officialname, languages, currencies, population, flag, data, code, favourited} = props;
+    const {name, officialname, languages, currencies, population, flag, data, favourited} = props;
    
 
     const dispatch = useDispatch();
@@ -26,9 +25,6 @@ const CountryCard = (props) => {
     }
 }
 
-
-
-// add filtering to dispatch to toggle favourites
 
     return (
         <>
