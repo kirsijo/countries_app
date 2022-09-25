@@ -33,10 +33,12 @@ html {
 
 h6 {
   color: white;
-  font-size: 18px;
+  font-size: 24px;
+  margin: 10px;
+  padding: 5px;
 }
 
-/* COUNTRIES LIST */
+/* COUNTRIES LIST / BROWSE */
 
 h3, h4 {
   color:white;

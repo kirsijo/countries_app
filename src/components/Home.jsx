@@ -15,8 +15,8 @@ const Home = () => {
             </Col>
 
         </Container>
-        <div className="overlay-div"><h6>Country app is a project I made in React classes at Business College Helsinki.
-        Built using https://restcountries.com and https://api.openweathermap.org
+        <div className="overlay-div"><h6>Country app is a project I made in React classes at Business College Helsinki.<br/>
+        Built using https://restcountries.com and https://api.openweathermap.org .<br/>
         Images courtesy of unsplash.com</h6></div>
         </>
     )
