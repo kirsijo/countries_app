@@ -56,9 +56,6 @@ const IndividualCountry = () => {
        return country;
       })
 
-      console.log(borderCountries);
-   
-
     if (loading) return (
       <p>loading...</p>
     )
