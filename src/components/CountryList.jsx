@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {initCountries, search} from '../features/countries/countriesSlice';
 
 
-const CountryList = (props) => {
+const CountryList = () => {
   
     const dispatch = useDispatch();
     const countryData = useSelector((state) => state.countries.countries);

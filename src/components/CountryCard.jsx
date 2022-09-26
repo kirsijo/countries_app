@@ -8,7 +8,6 @@ import {useDispatch} from 'react-redux'
 const CountryCard = (props) => {
     const {name, officialname, languages, currencies, population, flag, data, favourited} = props;
    
-
     const dispatch = useDispatch();
 
     const formatPopulation = (population) => {
@@ -34,8 +33,8 @@ const CountryCard = (props) => {
             <Card.Body>
             <Card.Title className="p-2">{name}</Card.Title>
             <Form>
-                <p>Been to this country?</p>
-                <Form.Check checked={favourited} variant="success" type="checkbox" inline="true" onChange={favourited ? () => dispatch(unfavourite(data)) : () => dispatch(favourite(data)) }>
+                Been to this country?
+                <Form.Check checked={favourited} variant="success" type="checkbox" onChange={favourited ? () => dispatch(unfavourite(data)) : () => dispatch(favourite(data)) }>
                 </Form.Check>
             </Form>
             <Card.Subtitle className="p-2"> Official name: {officialname}</Card.Subtitle>

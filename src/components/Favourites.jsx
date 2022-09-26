@@ -27,7 +27,8 @@ const Favourites = () => {
 
             <img className="d-block w-100"
             src={`https://source.unsplash.com/featured/1600x900?${country.name.common}`}></img>
-            <Carousel.Caption>{country.name.common}</Carousel.Caption>
+            <div className="overlay-div">
+            <Carousel.Caption className="overlay-div">{country.name.common}</Carousel.Caption></div>
         </Carousel.Item>))}
     </Carousel>
     </>
