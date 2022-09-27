@@ -17,7 +17,7 @@ const Home = () => {
         </Container>
         <div className="overlay-div"><h6>Country app is a project I made in React classes at Business College Helsinki.<br/>
         Built using https://restcountries.com and https://api.openweathermap.org .<br/>
-        Images courtesy of unsplash.com</h6></div>
+        Images courtesy of unsplash.com. This app is hosted at Vercel.</h6></div>
         </>
     )
 }
