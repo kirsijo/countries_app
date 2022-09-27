@@ -1,10 +1,5 @@
 import {Nav, Navbar} from 'react-bootstrap';
-import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux';
-import { favourites } from '../features/countries/countriesSlice';
-
-
-
 
 const Navigation = () => {
 
