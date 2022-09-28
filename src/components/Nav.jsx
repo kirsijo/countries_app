@@ -53,8 +53,8 @@ const favs = useSelector((state) => state.countries.favourites);
             }
             `}
         </style>
-        <Navbar className="p-3 mb-4" variant="glass" collapseOnSelect expand="sm" opacity="65" >
-        <Navbar.Brand className="m-3" variant="" href="/">Countries</Navbar.Brand>
+        <Navbar className="p-3 mb-4 fs-5" variant="glass" collapseOnSelect expand="sm" opacity="65" >
+        <Navbar.Brand className="m-3" variant="" href="/"><i className="bi bi-globe h1"></i></Navbar.Brand>
         <Navbar.Toggle  aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className="responsive-navbar-nav">
         <Nav className="mb-auto">
