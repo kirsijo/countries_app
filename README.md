@@ -1,6 +1,6 @@
 # Countries and Weather app
 
-https://countries-app-qj9c.vercel.app/
+https://countries-app-qj9c-kirsijo.vercel.app/
 
 - Created using React Bootstrap and Redux Toolkit 
 - Lists your favourite/visited countries by persisting state in localStorage
