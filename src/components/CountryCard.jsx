@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import {favourite, unfavourite} from '../features/countries/countriesSlice'
 import {useDispatch} from 'react-redux'
+import { Link } from 'react-router-dom';
 
 const CountryCard = (props) => {
     const {name, officialname, languages, currencies, population, flag, data, favourited} = props;
@@ -45,7 +46,7 @@ const CountryCard = (props) => {
                 </Card.Subtitle>
             <Card.Subtitle className="p-2">Population: {formatPopulation(population)}</Card.Subtitle>
             </Card.Body>
-            <Button variant="outline-info" href={`/countries/${props.code}`}>See more</Button>               
+            <Button as={Link} variant="outline-info" to={`/countries/${props.code}`}>See more</Button>               
                
           </Card>
         </>

@@ -1,5 +1,6 @@
 import {Nav, Navbar} from 'react-bootstrap';
 import {useSelector} from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
 
@@ -59,13 +60,13 @@ const favs = useSelector((state) => state.countries.favourites);
         <Navbar.Collapse className="responsive-navbar-nav">
         <Nav className="mb-auto">
             <Nav.Item>
-           <Nav.Link href="/">Home</Nav.Link>
+           <Nav.Link as={Link} to="/">Home</Nav.Link>
            </Nav.Item>
            <Nav.Item>
-            <Nav.Link href="/countries"> Browse </Nav.Link>
+            <Nav.Link as={Link} to="/countries"> Browse </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-            <Nav.Link href="/favourites"> Favourites ( {favs.length} )</Nav.Link>
+            <Nav.Link as={Link} to="/favourites"> Favourites ( {favs.length} )</Nav.Link>
             </Nav.Item>
 
         </Nav>
