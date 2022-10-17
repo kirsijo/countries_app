@@ -31,14 +31,23 @@ const IndividualCountry = () => {
     const api_key = process.env.REACT_APP_API_KEY;
 
     const getWeather = async () => {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${country?.capital}&appid=${api_key}&units=metric`
-      );
-      setTemperature(response.data.main.temp);
-      setWind(response.data.wind.speed);
-      setIcon(response.data.weather[0].icon);
-      setDescription(response.data.weather[0].description)
-      setLoading(false);
+      try {
+        const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${country?.capital}&appid=${api_key}&units=metric`)
+        setTemperature(response.data.main.temp);
+        setWind(response.data.wind.speed);
+        setIcon(response.data.weather[0].icon);
+        setDescription(response.data.weather[0].description)
+        setLoading(false);
+      } catch(error) {
+        setTemperature(undefined);
+        setWind('-');
+        setIcon('no icon available');
+        setDescription('Unfortunately weather is not currently available for this destination')
+        setLoading(false);
+      }
+
+      
     };
 
     useEffect(() => {
@@ -64,6 +73,7 @@ const IndividualCountry = () => {
         <Nav/>
         <Container className="sm justify-content-center bg-light rounded p-3">
             <Row className="text-center p-2"><h1>{country?.name.common} {country?.flag}</h1></Row>
+            {/* WEATHER */}
             {country?.capital &&
             <Row className="m-3 justify-content-center">Current weather in {country?.capital}: {description}</Row>}
            <Row className="align-items-center">
@@ -72,7 +82,7 @@ const IndividualCountry = () => {
         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         alt="weathericon"
       />  : <p>loading...</p>} </Col>
-            <Col className="border border-info p-2" xs={7}><p><i className="bi bi-thermometer-half"></i>{temperature.toFixed(0)} °C</p>
+            <Col className="border border-info p-2" xs={7}><p><i className="bi bi-thermometer-half"></i>{ temperature === undefined ? 'not available' : temperature.toFixed(0) + '°C'} </p>
           <p><i className="bi bi-wind"></i> {wind} m/s</p> 
           </Col>
           </Row>
